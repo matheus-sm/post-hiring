@@ -1,32 +1,51 @@
-import {Request, Response} from 'express';
+import { Request, Response } from 'express';
 
 const documentsModel = require('../model/documents')
- 
+
 export default {
-    async listAllDocuments(request: Request, response: Response){
+    async listAllDocuments(request: Request, response: Response) {
 
         const documents = await documentsModel.listAllDocuments()
         response.json(documents)
     },
-    
-    async insertDocuments(request: Request, response: Response){
-        const{
+
+    async listOneDocuments(request: Request, response: Response) {
+        const { document_id } = request.params
+
+        try {
+            const documents = await documentsModel.listOneDocuments(document_id)
+            const retorno = {
+                status: 200,
+                documents: documents
+            }
+            response.json(documents)
+        } catch (err) {
+            const msg = {
+                mensagem: "Não foi buscar o documento",
+                erro: err
+            }
+            response.json(msg)
+        }
+    },
+
+    async insertDocuments(request: Request, response: Response) {
+        const {
             title,
             material_link,
             document_content,
             sector_id,
         } = request.body
 
-        try{
-            const documents =  await documentsModel.insertDocuments(title, material_link, document_content, sector_id)
+        try {
+            const documents = await documentsModel.insertDocuments(title, material_link, document_content, sector_id)
 
             const retorno = {
                 status: 200,
                 mensagem: "Cadastro realizado com sucesso",
-                documents: {documents}
+                documents: { documents }
             }
             response.json(retorno)
-        } catch(err){
+        } catch (err) {
             const msg = {
                 message: "Erro ao cadastrar"
             }
@@ -34,11 +53,11 @@ export default {
         }
     },
 
-    async deleteDocuments(request: Request, response: Response){
-        const{
+    async deleteDocuments(request: Request, response: Response) {
+        const {
             document_id
         } = request.params
-        try{
+        try {
             const documents = await documentsModel.deleteDocuments(document_id)
             const retorno = {
                 status: 200,
@@ -46,22 +65,22 @@ export default {
                 documents: documents
             }
             response.json(retorno)
-        } catch(err){
+        } catch (err) {
             const msg = {
                 mensagem: "Não foi possível deletar o documento",
                 erro: err
-            }  
+            }
             response.json(msg)
         }
     },
 
-    async updateDocuments(request: Request, response: Response){
+    async updateDocuments(request: Request, response: Response) {
 
-        const{
+        const {
             document_id
         } = request.params
 
-        const{
+        const {
             title,
             material_link,
             document_content,
@@ -69,16 +88,16 @@ export default {
 
         } = request.body
 
-        try{
+        try {
 
-            const documents = await documentsModel.updateDocuments(document_id, title, material_link, document_content,sector_id)
+            const documents = await documentsModel.updateDocuments(document_id, title, material_link, document_content, sector_id)
             const retorno = {
                 status: 200,
                 documents: documents
             }
             response.json(retorno)
 
-        } catch(err){
+        } catch (err) {
 
             const msg = {
                 mensagem: "Não foi possível atualizar o documento",

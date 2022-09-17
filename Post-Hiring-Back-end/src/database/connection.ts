@@ -1,4 +1,4 @@
-import {Client} from 'pg'; 
+import { Client } from 'pg';
 
 const client = new Client({
     user: 'postgres',
@@ -8,12 +8,12 @@ const client = new Client({
     port: 5432
 });
 
-async function connect(){
-    const connection = await client.connect().catch(e => { console.log(`Erro ao conectar: ${e}`)});
+async function connect() {
+    const connection = await client.connect().catch(e => { console.log(`Erro ao conectar: ${e}`) });
     console.log("Conectou no Postgres!");
     return connection
 }
 
 connect();
 
-module.exports = {connect, client}
+module.exports = { connect, client }

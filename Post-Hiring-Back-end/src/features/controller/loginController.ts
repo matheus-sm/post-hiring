@@ -1,19 +1,19 @@
-import {Request, Response} from 'express';
+import { Request, Response } from 'express';
 
 const loginModel = require('../model/login')
- 
-export default {
-    async Auth(request: Request, response: Response){
 
-        const{
+export default {
+    async Auth(request: Request, response: Response) {
+
+        const {
             nickname,
             password
         } = request.body.data
 
-        try{
-            const [login] = await loginModel.Auth(nickname,password)
+        try {
+            const [login] = await loginModel.Auth(nickname, password)
             console.log(login)
-            
+
             const retorno = {
                 status: 200,
                 retorno: {
@@ -27,19 +27,19 @@ export default {
                 }
             }
             response.json(retorno)
-            
-            
-        } catch(err){
+
+
+        } catch (err) {
 
             const msg = {
-                retorno:{
+                retorno: {
                     mensagem: "Usuário não autenticado",
                     logged: false,
                     erro: err
                 }
-                
+
             }
             response.json(msg)
-        } 
+        }
     }
 }

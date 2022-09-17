@@ -57,9 +57,9 @@ async function updateSector(sector_id: number, sector_name: string, description:
     }
 }
 
-async function listOneSector(sector_id: number){
+async function listOneSector(sector_id: number) {
 
-    const sql ='select * from sector where sector_id = $1;'
+    const sql = 'select * from sector where sector_id = $1;'
     const values = [sector_id]
 
     try {

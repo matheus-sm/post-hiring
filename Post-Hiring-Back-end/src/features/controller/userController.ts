@@ -1,16 +1,16 @@
-import {Request, Response} from 'express';
+import { Request, Response } from 'express';
 
 const userModel = require('../model/usuario')
- 
+
 export default {
-    async listAllUser(request: Request, response: Response){
+    async listAllUser(request: Request, response: Response) {
 
         const users = await userModel.listAllUser()
         response.json(users)
     },
 
-    async insertUsuarioAdm(request: Request, response: Response){
-        const{
+    async insertUsuarioAdm(request: Request, response: Response) {
+        const {
             user_name,
             birth_date,
             sector_id,
@@ -22,18 +22,18 @@ export default {
 
         console.log(request.body)
 
-        try{
-            const [users] =  await userModel.insertUsuario(user_name, birth_date, sector_id, is_supervisor, nickname, email, password)
+        try {
+            const [users] = await userModel.insertUsuario(user_name, birth_date, sector_id, is_supervisor, nickname, email, password)
             console.log(users.user_id)
-            const userAdm =  await userModel.insertUsuarioAdm(users.user_id)
+            const userAdm = await userModel.insertUsuarioAdm(users.user_id)
 
             const retorno = {
                 status: 200,
                 mensagem: "Cadastro realizado com sucesso",
-                userAdm: {userAdm}
+                userAdm: { userAdm }
             }
             response.json(retorno)
-        } catch(err){
+        } catch (err) {
             const msg = {
                 message: "Erro ao cadastrar"
             }
@@ -41,9 +41,9 @@ export default {
         }
     },
 
-    async insertUsuarioAssociate(request: Request, response: Response){
-        const{
-            
+    async insertUsuarioAssociate(request: Request, response: Response) {
+        const {
+
             user_name,
             birth_date,
             sector_id,
@@ -54,17 +54,17 @@ export default {
             supervisor_id
         } = request.body
 
-        try{
-            const [users] =  await userModel.insertUsuario(user_name, birth_date, sector_id, is_supervisor, nickname, email, password)
-            const user_associate =  await userModel.insertUsuarioAssociate(users.user_id, supervisor_id)
+        try {
+            const [users] = await userModel.insertUsuario(user_name, birth_date, sector_id, is_supervisor, nickname, email, password)
+            const user_associate = await userModel.insertUsuarioAssociate(users.user_id, supervisor_id)
 
             const retorno = {
                 status: 200,
                 mensagem: "Cadastro realizado com sucesso",
-                user_associate: {user_associate}
+                user_associate: { user_associate }
             }
             response.json(retorno)
-        } catch(err){
+        } catch (err) {
             const msg = {
                 message: "Erro ao cadastrar"
             }
@@ -72,22 +72,22 @@ export default {
         }
     },
 
-    async updateUsuario(request: Request, response: Response){
+    async updateUsuario(request: Request, response: Response) {
 
-        const{
+        const {
             user_id
         } = request.params
 
-        const{
+        const {
             user_name,
-            birth_date, 
-            sector_id, 
-            nickname, 
-            email, 
+            birth_date,
+            sector_id,
+            nickname,
+            email,
             password
         } = request.body
 
-        try{
+        try {
 
             const users = await userModel.updateUsuario(user_name, birth_date, sector_id, nickname, email, password, user_id)
             const retorno = {
@@ -96,7 +96,7 @@ export default {
             }
             response.json(retorno)
 
-        } catch(err){
+        } catch (err) {
 
             const msg = {
                 mensagem: "Não foi possível atualizar o Usuario",
@@ -106,17 +106,17 @@ export default {
         }
     },
 
-    async updateUsuarioAssociate(request: Request, response: Response){
+    async updateUsuarioAssociate(request: Request, response: Response) {
 
-        const{
+        const {
             user_associate_id
         } = request.params
 
-        const{
+        const {
             supervisor_id
         } = request.body
 
-        try{
+        try {
 
             const users = await userModel.updateUsuarioAssociate(user_associate_id, supervisor_id)
             const retorno = {
@@ -125,7 +125,7 @@ export default {
             }
             response.json(retorno)
 
-        } catch(err){
+        } catch (err) {
 
             const msg = {
                 mensagem: "Não foi possível atualizar o Usuario",
@@ -135,12 +135,12 @@ export default {
         }
     },
 
-    async altStatus(request: Request, response: Response){
-        const{
+    async altStatus(request: Request, response: Response) {
+        const {
             user_id
         } = request.params
 
-        try{
+        try {
 
             const users = await userModel.altStatus(user_id)
             const retorno = {
@@ -149,7 +149,7 @@ export default {
             }
             response.json(retorno)
 
-        } catch(err){
+        } catch (err) {
 
             const msg = {
                 mensagem: "Não foi possível deletar o Usuario",
