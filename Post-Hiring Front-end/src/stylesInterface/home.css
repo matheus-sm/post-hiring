@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Poppins:wght@400;500;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+section.home{
+    background-color: rgb(234, 234, 234);
+
+    width: 100%;
+    height: 100%;
+    
+    padding: 3rem;
+}
+
+section.home img{
+    max-height: 400px;
+    width: 100%;
+    max-width: 400px;
+    margin: 2rem 0;
+}
+
+
+section.home form{
+    width: 100%;
+    max-width: 300px;
+    padding: 1rem;
+    border: 1px solid black;
+}
+
+section.home form li{
+    list-style: none;
+}
+
+section.home form a{
+    font: 900 20px "poppins";
+    color: rgb(11, 11, 116);
+    text-decoration: none;
+    transition: 0.5s;
+}
+
+section.home form a:hover{
+    color: rgb(5, 5, 44);
+}
+
+section.home .div{
+    font: 400 17px "DM Sans";
+}
+
+section.home h1{
+    margin: 2rem 0;
+    margin-left: 20px;
+    justify-content: center;
+    font: 900 35px "DM Sans";
+}
+
+section.home p{
+    margin: 1rem 0;
+    justify-content: center;
+    font: 400 18px "DM Sans";
+}
+
+section.home .divider{
+    margin: 3rem 0;
+    height: 3px;
+    background: linear-gradient(45deg, rgb(147, 197, 221), rgb(6, 3, 65));
+}
+
+section.home .divider-2{
+    margin: 3rem 0;
+    height: 3px;
+    background: linear-gradient(45deg, rgb(6, 3, 65), rgb(147, 197, 221));
+}
+
+section.home h3{
+    color: rgb(1, 1, 27);
+    margin-left: 10px;
+    margin-top: 20px;
+    font-size: 20px;
+}

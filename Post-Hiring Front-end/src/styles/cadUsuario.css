@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Poppins:wght@400;500;700&display=swap');
+
+section.cadUsuario .area-usuario{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(234, 234, 234);
+    height: 100vh;
+    font-family: "poppins";
+}
+
+section.cadUsuario .divUsuario{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 400px;
+    height: 480px;
+    background-color: #424348;
+    border-radius: 8px;
+    padding: 20px 25px;
+    border: 1px solid black;
+}
+
+section.cadUsuario form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+section.cadUsuario .divUsuario h1{
+    color: white;
+    font-size: 23px;
+    margin-bottom: 9px;
+}
+
+section.cadUsuario form input{
+    color: white;
+    background-color: rgba(45, 42, 42, 0.752);
+    margin-top: 9px;
+    padding-left: 15px;
+    border-radius: 5px;
+    height: 30px;
+    border: 1px solid black;
+}
+
+section.cadUsuario .divUsuario input.button{
+    margin-top: 15px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 10px;
+    height: 48px;
+    padding: 0 50px;
+    background-color: rgb(40, 40, 131);
+    color: white;
+    text-decoration: none;
+    transition: 0.5s;
+}
+
+section.cadUsuario .divUsuario input.button:hover{
+    background-color: rgb(21, 21, 72);
+}

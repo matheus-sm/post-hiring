@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Poppins:wght@400;500;700&display=swap');
+
+.upper-nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(41, 40, 61);
+    margin-bottom: 1px solid black;
+    position: fixed;
+    width: 100%;
+    height: 10vh;
+}
+
+.upper-nav div.logo{
+    color: white;
+    font: 500 23px "DM Sans";
+}
+
+.upper-nav div.logo strong{
+    color: rgb(32, 32, 212);
+}
+
+.upper-nav div.logo, i{
+    padding: 30px;
+}
+
+
+.hidden, .shown{
+    width: 20vw;
+    height: 100vh;
+
+    display: flex;
+    background: rgb(41, 40, 61);
+    border: 1px solid rgb(0, 0, 0);
+}
+
+.hidden{
+    margin-left: -100% !important;
+    transition: ease-in 0.5s;
+    position: fixed;
+}
+
+/*Exemplo*/
+.user-adm-hidden{
+    opacity: 0;
+    visibility: hidden;
+}
+
+.user-adm-shown{
+    opacity: 1;
+    visibility: inherit;
+}
+
+.shown{
+    transition: ease-out 0.5s;
+    position: fixed;
+    
+    justify-content: center;
+}
+
+aside.shown ul{
+    margin-top: 28px; 
+}
+
+aside.shown ul li{
+    margin-top: 28px;
+    list-style-type: none;
+}
+
+
+aside.shown ul li a{
+    font: 400 20px "DM Sans";
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
+
+aside.shown ul li a.log{
+    justify-content: center;
+    align-items: center;
+    padding: 0 5px;
+    border-radius: 10px;
+    background-color: red;
+    color: white;
+}
+
+aside.shown ul li .divider{
+    height: 3px;
+    background: linear-gradient(45deg, rgb(147, 197, 221), rgb(6, 3, 65));
+}
+
+
+@media only screen and (max-width: 530px) {
+    aside.shown ul li a{
+        font: 400 15px "DM Sans";
+    }
+  }
+
+@media only screen and (max-width: 420px) {
+    aside.shown ul li a{
+        font: 100 11px "DM Sans";
+    }
+  }

@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Poppins:wght@400;500;700&display=swap');
+
+div .divOnePerfil{
+    background-color: #b3b3b3;
+    font-family: "poppins";
+}
+
+section.perfil .area-perfil{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    height: 100vh;
+}
+
+/* login */
+section.perfil .divPerfil{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 400px;
+    height: 340px;
+    background-color: #424348;
+    border-radius: 8px;
+    border: 1px solid black;
+    padding: 35px;
+}
+
+section.perfil .divPerfil h1{
+    color: white;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+section.perfil form{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+section.perfil form label{
+    color: white;
+    background-color: rgba(45, 42, 42, 0.752);
+    border-radius: 5px;
+    margin-top: 11px;
+    padding-left: 15px;
+    border: 1px solid black;
+}
