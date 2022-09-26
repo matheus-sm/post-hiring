@@ -8,8 +8,8 @@ export default {
         const {
             nickname,
             password
-        } = request.body.data
-
+        } = request.body.data[0]
+    
         try {
             const [login] = await loginModel.Auth(nickname, password)
             console.log(login)
@@ -20,6 +20,7 @@ export default {
                     user_id: login.user_id,
                     user_name: login.user_name,
                     sector_id: login.sector_id,
+                    document_id: login.document_id,
                     is_supervisor: login.is_supervisor,
                     nickname: login.nickname,
                     email: login.email,

@@ -1,8 +1,23 @@
 const loginConnection = require('../../database/connection')
 
 async function Auth(nickname: string, password: string) {
-
-    const sql = `select user_id, user_name, sector_id, is_supervisor, nickname, email from public.user where nickname = $1 and password = $2 `
+    // console.log(nickname)
+    const sql = `
+    select
+        public.user.user_id,
+        public.user.user_name,
+        public.user.sector_id,
+        public.user.is_supervisor,
+        public.user.nickname,
+        public.user.email,
+        public.documents.document_id
+    from
+        public.user
+    left join 
+        public.documents on public.documents.sector_id  = public.user.sector_id
+    where
+        public.user.nickname = $1
+        and public.user.password = $2`
 
     const values = [nickname, password]
 
