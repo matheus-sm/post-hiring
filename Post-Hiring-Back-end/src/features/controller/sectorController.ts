@@ -5,7 +5,6 @@ const sectorModel = require('../model/sector')
 export default {
   async listAllSector(request: Request, response: Response) {
     const sector: [] = await sectorModel.listAllSector()
-    // console.log('teste')
     response.send(sector)
   },
 
@@ -17,7 +16,6 @@ export default {
 
     try {
       const sector = await sectorModel.insertSector(sector_name, description)
-
       const sector_response = {
         success: true,
         status: 201,
@@ -56,7 +54,6 @@ export default {
   },
 
   async updateSector(request: Request, response: Response) {
-
     const {
       sector_id
     } = request.params
@@ -67,16 +64,13 @@ export default {
     } = request.body
 
     try {
-
       const sector = await sectorModel.updateSector(sector_id, sector_name, description)
       const retorno = {
         status: 200,
         sector: sector
       }
       response.json(retorno)
-
     } catch (err) {
-
       const msg = {
         mensagem: "Não foi possível atualizar o setor",
         erro: err
@@ -85,7 +79,6 @@ export default {
     }
   },
   async listOneSector(request: Request, response: Response) {
-
     const { sector_id } = request.params
 
     try {
@@ -93,10 +86,8 @@ export default {
       if (!result.length) {
         response.status(400).json({ messagem: 'Setor não encontrado', erro: null })
       }
-
       const [sector] = result
       response.json({ sector })
-
     } catch (err) {
       console.log(err)
       const msg = {

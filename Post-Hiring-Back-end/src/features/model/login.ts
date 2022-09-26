@@ -1,8 +1,7 @@
 const loginConnection = require('../../database/connection')
 
 async function Auth(nickname: string, password: string) {
-    // console.log(nickname)
-    const sql = `
+  const sql = `
     select
         public.user.user_id,
         public.user.user_name,
@@ -18,19 +17,14 @@ async function Auth(nickname: string, password: string) {
     where
         public.user.nickname = $1
         and public.user.password = $2`
+  const values = [nickname, password]
 
-    const values = [nickname, password]
-
-    try {
-
-        const res = await loginConnection.client.query(sql, values);
-        return res.rows;
-
-    } catch (err) {
-        console.error(err);
-    }
+  try {
+    const res = await loginConnection.client.query(sql, values);
+    return res.rows;
+  } catch (err) {
+    return (err);
+  }
 }
 
-
 module.exports = { Auth }
-
